@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Der PC im lokalen Netz spricht HTTP. Die Anfragen sind per HMAC signiert,
+     der Inhalt (der Barcode) ist im WLAN aber lesbar. Nur im eigenen Netz nutzen. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bibliothek</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Bibliothek</h1>
+    <div id="session" class="session"></div>
+  </header>
+
+  <main>
+    <section class="catalog" aria-labelledby="catalog-h">
+      <h2 id="catalog-h">Katalog</h2>
+      <input id="search" type="search" placeholder="Titel, Autor/in oder ISBN suchen" autocomplete="off">
+      <p id="catalog-msg" class="msg" role="status"></p>
+      <div id="books" class="books"></div>
+    </section>
+
+    <aside class="side">
+      <section id="auth-panel" class="panel" hidden>
+        <div class="tabs" role="tablist">
+          <button id="tab-login" role="tab" aria-selected="true">Anmelden</button>
+          <button id="tab-register" role="tab" aria-selected="false">Registrieren</button>
+        </div>
+        <form id="auth-form" autocomplete="on">
+          <label>Benutzername
+            <input name="username" required minlength="3" maxlength="40" autocomplete="username">
+          </label>
+          <label>Passwort
+            <input name="password" type="password" required minlength="8" autocomplete="current-password">
+          </label>
+          <p id="auth-msg" class="msg error" role="alert"></p>
+          <button id="auth-submit" class="primary" type="submit">Anmelden</button>
+        </form>
+      </section>
+
+      <section id="add-panel" class="panel" hidden>
+        <h2>Buch hinzufügen</h2>
+        <form id="add-form">
+          <div class="field">
+            <label for="isbn">Barcode / ISBN</label>
+            <div class="isbn-row">
+              <input id="isbn" name="isbn" maxlength="30" autocomplete="off"
+                     placeholder="Barcode scannen oder eintippen">
+              <button type="button" id="lookup-btn" title="Buchdaten online nachschlagen">Suchen</button>
+            </div>
+            <p class="hint">Mit Enter oder bei 13 Ziffern werden Titel, Autor/in und Verlag online gesucht.</p>
+          </div>
+          <label>Titel
+            <input name="title" required maxlength="300">
+          </label>
+          <label>Autor/in
+            <input name="author" required maxlength="200">
+          </label>
+          <label>Verlag (optional)
+            <input name="publisher" maxlength="200">
+          </label>
+          <div class="row">
+            <label>Jahr
+              <input name="year" type="number" min="1000" max="2100">
+            </label>
+            <label>Exemplare
+              <input name="copies_total" type="number" min="1" max="1000" value="1">
+            </label>
+          </div>
+          <p id="add-msg" class="msg" role="alert"></p>
+          <button class="primary" type="submit">Buch speichern</button>
+        </form>
+      </section>
+
+      <section id="loans-panel" class="panel" hidden>
+        <h2>Meine Ausleihen</h2>
+        <ul id="loans" class="loans"></ul>
+      </section>
+
+      <section id="admin-panel" class="panel" hidden>
+        <h2>Alle offenen Ausleihen</h2>
+        <ul id="admin-loans" class="loans"></ul>
+      </section>
+    </aside>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
